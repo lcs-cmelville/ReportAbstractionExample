@@ -17,7 +17,17 @@ struct ReportsListView: View {
             //"List of reports" is the input list
             //the ForEach, with each loop or iteration, places a new item from the list into "currentReport"
             ForEach(listOfReports) { currentReport in
-                Text(currentReport.name)
+                
+                NavigationLink(destination: {
+                    
+                    ReportDetailView(item: currentReport)
+                    
+                }, label: {
+                    
+                    Text(currentReport.name)
+
+                })
+                
             }
         }
         .navigationTitle("Reports")
@@ -31,5 +41,6 @@ struct ReportsListView_Previews: PreviewProvider {
         NavigationView {
             ReportsListView()
         }
+        .preferredColorScheme(.dark)
     }
 }
